@@ -2,7 +2,6 @@ package com.ecommerce.shopping.controller;
 
 import com.ecommerce.shopping.dto.UserRequestDto;
 import com.ecommerce.shopping.dto.UserResponseDto;
-import com.ecommerce.shopping.model.User;
 import com.ecommerce.shopping.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +20,12 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User addUser(@RequestBody UserRequestDto userRequestDto){
+    public UserResponseDto addUser(@RequestBody UserRequestDto userRequestDto){
         return userService.addUser(userRequestDto);
     }
 
     @PutMapping("/users/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto){
+    public UserResponseDto updateUser(@PathVariable Long id, @RequestBody UserRequestDto userRequestDto){
         return userService.updateUser(id, userRequestDto);
     }
 
