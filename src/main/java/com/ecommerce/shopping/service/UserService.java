@@ -135,14 +135,13 @@ public class UserService {
     }
 
 
-    public String deleteUserById(Long id) {
+    public void deleteUserById(Long id) {
         if (!userRepository.existsById(id)){
-            log.error("User not found with ID: {}", id);
+            log.info("User not found with ID: {}", id);
             throw new RuntimeException("User not found with id"+id);        }
         else {
             userRepository.deleteById(id);
             log.info("User deleted successfully with ID: {}", id);
-            return "User Deleted Successfully from id:" + id;
         }
     }
 }
