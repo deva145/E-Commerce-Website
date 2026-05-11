@@ -3,6 +3,8 @@ package com.ecommerce.shopping.controller;
 import com.ecommerce.shopping.dto.ProductRequestDto;
 import com.ecommerce.shopping.dto.ProductResponseDto;
 import com.ecommerce.shopping.service.ProductService;
+
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,8 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<ProductResponseDto>> fetchAllProducts(){
-        return ResponseEntity.ok(productService.fetchAllProducts());
+    public ResponseEntity<Page<ProductResponseDto>> fetchAllProducts(@RequestParam(defaultValue = "0")int page, @RequestParam(defaultValue = "5")int size){
+        return ResponseEntity.ok(productService.fetchAllProducts(page, size));
     }
 
     @PostMapping("/products")

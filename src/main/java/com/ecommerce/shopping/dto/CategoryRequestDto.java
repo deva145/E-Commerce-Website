@@ -1,7 +1,12 @@
 package com.ecommerce.shopping.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CategoryRequestDto {
+    @NotBlank(message = "Category name is required")
     private String name;
+
+    @NotBlank(message = "Description should not be Blank")
     private String description;
 
     public CategoryRequestDto() {
